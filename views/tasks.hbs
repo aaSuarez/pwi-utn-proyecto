@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+
+        {{#each tasks}}
+            <div class="col-md-3 mt-5">
+                <div class="card text-center">
+                    <div class="card-header">
+                        <h3>{{name}}</h3>
+                    </div>
+                    <div class="card-body">
+                            <h3 class="card-title text-uppercase">{{title}}</h3>
+                        </a>
+                        <p>{{description}}</p>
+                        <p>{{create_at}}</p>
+                        
+                        <a href="tasks/delet/{{id}}" class="btn btn-danger">Delete</a>
+                        <a href="/tasks/edit/{{id}}" class="btn btn-warning">Edit</a>
+                    </div>
+                </div>
+            </div>
+            {{else}}
+           <div class="col-md-4 mx-auto mt-5">
+               <div class="card card-body text-center">
+                   <p>No hay Tareas creadas </p>
+                   <a href="/add">Crea Una Tarea</a>
+               </div>
+           </div>
+        {{/each}}
+    </div>
+</div>
