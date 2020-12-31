@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session')
 session
+const dotenv = require('dotenv')
+dotenv.config();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -15,6 +17,7 @@ const signipRouter = require('./routes/signip');
 
 const {auth} = require('./middlewares/auth');
 const { verify } = require('crypto');
+const { required } = require('@hapi/joi');
 
 
 var app = express();

@@ -7,7 +7,8 @@ const show = (req,res) => {
 
 
 const signip = async(req,res) => {
-
+    
+try{
     req.body.password = sha1(req.body["password"]);
     const result = await auth(req.body)
    
@@ -18,6 +19,10 @@ if (result.length == 0) res.render('signip', {
 let [{id}] = result
 req.session.idUser = id;
 res.redirect('add')
+}catch{
+    res.render('error')
+}
+    
 
 }
 

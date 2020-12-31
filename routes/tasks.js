@@ -22,14 +22,19 @@ router.get('/delet/:id',async(req,res)=>{
 // *********************
 
 router.get('/edit/:id',async(req,res)=>{
-    const {id} = req.params
+    try{
+        const {id} = req.params
   const [tasks] = await pool.query('SELECT * FROM tasks WHERE ID = ?',[id])
     res.render('edit',{tasks})
+    }catch{
+        res.render('error')
+    }
     
 })
 
 router.post('/edit/:id',async(req,res)=>{
-    const {id} = req.params
+    try{
+        const {id} = req.params
     const {name,title,description} = req.body
     const newLink = { 
         name,
@@ -40,6 +45,9 @@ router.post('/edit/:id',async(req,res)=>{
 
    console.log(newLink)
    res.redirect('/tasks')
+    }catch{
+        res.render('error')
+    }
 })
 
 router.get('/',task)

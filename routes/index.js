@@ -5,7 +5,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   
 console.log(req.session.idUser)
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'Tasks-App' });
 });
 
 module.exports = router;

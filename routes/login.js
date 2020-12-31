@@ -2,10 +2,7 @@ const express = require('express')
 const router = express.Router();
 const pool = require('../baseDatos/db')
 const sha1 = require('sha1')
-const multer  = require('multer')
-const config = {dest:'../temporal'}
-const upload = multer(config)
-
+const {validate} = require("../middlewares/login");
 const login = (async (req, res) => {
   
     try{
@@ -36,5 +33,5 @@ const loginGet = ((req, res) => {
 
 router.get('/', loginGet)
 
-router.post('/',upload.single('file'), login)
+router.post('/',validate, login)
 module.exports = router
